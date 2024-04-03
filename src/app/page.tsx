@@ -1,6 +1,15 @@
-"run client"
+"use client"
+
+import { todoList } from "@/types/todoList";
+import { useState } from "react";
 
 function Page() {
+
+  const [ list, setList ] = useState<todoList[]>([
+    { label: 'Do dishes', check: false },
+    { label: 'Go shopping', check: false }
+  ]);
+
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen gap-3">
       
