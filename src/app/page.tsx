@@ -13,9 +13,15 @@ function Page() {
         />
         <button className="ml-3 bg-teal-500 py-2 px-5 rounded-sm active:bg-teal-400">Add</button>
         <ul className="mt-3 flex flex-col gap-3">
+          
           <li className="rounded-sm flex items-center justify-between">
             <p className="inline pl-2">Task 1</p><button className="bg-pink-500 py-1 px-3 rounded-sm active:bg-pink-400">Delete</button>
           </li>
+
+          <li className="rounded-sm flex items-center justify-between">
+            <p className="inline pl-2">Task 2</p><button className="bg-pink-500 py-1 px-3 rounded-sm active:bg-pink-400">Delete</button>
+          </li>
+        
         </ul>
       </div>
 
