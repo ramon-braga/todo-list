@@ -10,8 +10,14 @@ function Page() {
   const [ list, setList ] = useState<todoList[]>([]);
 
   function handleAddButton() {
+    if (inputValue.trim() === '') return;
+    
     setList([...list, { label: inputValue, check: false }]);
     setInputValue('');
+  }
+
+  function handleDeleteButton(index: number) {
+    setList(list.filter((item, key) => key !== index));
   }
 
   return (
@@ -34,9 +40,9 @@ function Page() {
         
         <ul className="mt-9 flex flex-col gap-4">
 
-        {list.map(task =>
-          <li className="rounded-sm flex items-center justify-between">
-             <p className="inline pl-2">{task.label}</p><button className="bg-transparent border border-red-500 py-1 px-3 rounded-sm active:bg-red-400">Delete</button>
+        {list.map((task, index) =>
+          <li key={index} className="rounded-sm flex items-center justify-between">
+             <p className="inline pl-2">{task.label}</p><button className="bg-transparent border border-red-500 py-1 px-3 rounded-sm active:bg-red-400" onClick={() => handleDeleteButton(index)}>Delete</button>
           </li>
         )}
 
