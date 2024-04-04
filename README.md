@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Todo List Application
 
-## Getting Started
+This is a simple todo list application built using React, result of my first steps learning it.
 
-First, run the development server:
+## Usage
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Enter a task in the input field.
+- Click on the "Add" button to add the task to the list.
+- Tasks will be displayed in a list format with a checkbox and a delete button.
+- Click on the checkbox to mark a task as complete.
+- Click on the "Delete" button to remove a task from the list.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Code Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `use client`: This line imports the client module.
+- `import { todoList } from "@/types/todoList";`: Importing the `todoList` type from the todoList module.
+- `import { useState } from "react";`: Importing the `useState` hook from React.
+- `function Page()`: Defining the main component `Page`.
+- `const [ inputValue, setInputValue ] = useState('');`: Initializing state for the input value.
+- `const [ list, setList ] = useState<todoList[]>([]);`: Initializing state for the todo list.
+- `function handleAddButton()`: Function to handle adding a new task to the list.
+- `function handleDeleteButton(index: number)`: Function to handle deleting a task from the list.
+- `function toggleCheckBox(index: number)`: Function to toggle the checkbox of a task.
+- The return statement contains the JSX code for rendering the todo list UI.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Component Structure
 
-## Learn More
+- The `Page` component is the main component that renders the todo list.
+- It consists of an input field to add new tasks, a list of tasks with checkboxes, and delete buttons for each task.
 
-To learn more about Next.js, take a look at the following resources:
+## Dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- This application uses React for building the user interface.
