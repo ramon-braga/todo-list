@@ -11,13 +11,20 @@ function Page() {
 
   function handleAddButton() {
     if (inputValue.trim() === '') return;
-    
+
     setList([...list, { label: inputValue, check: false }]);
     setInputValue('');
   }
 
   function handleDeleteButton(index: number) {
     setList(list.filter((item, key) => key !== index));
+  }
+
+  function toggleCheckBox(index: number) {
+    const newList = [...list];
+    newList[index].check = !newList[index].check;
+    
+    setList(newList);
   }
 
   return (
@@ -42,7 +49,8 @@ function Page() {
 
         {list.map((task, index) =>
           <li key={index} className="rounded-sm flex items-center justify-between">
-             <p className="inline pl-2">{task.label}</p><button className="bg-transparent border border-red-500 py-1 px-3 rounded-sm active:bg-red-400" onClick={() => handleDeleteButton(index)}>Delete</button>
+            <input type="checkbox" checked={task.check} onClick={() => toggleCheckBox(index)}  className="w-6 h-6" />
+            <p className="inline pl-2">{task.label}</p><button className="bg-transparent border border-red-500 py-1 px-3 rounded-sm active:bg-red-400" onClick={() => handleDeleteButton(index)}>Delete</button>
           </li>
         )}
 
