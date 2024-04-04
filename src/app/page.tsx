@@ -5,10 +5,14 @@ import { useState } from "react";
 
 function Page() {
 
-  const [ list, setList ] = useState<todoList[]>([
-    { label: 'Do dishes', check: false },
-    { label: 'Go shopping', check: false }
-  ]);
+  const [ inputValue, setInputValue ] = useState('');
+
+  const [ list, setList ] = useState<todoList[]>([]);
+
+  function handleAddButton() {
+    setList([...list, { label: inputValue, check: false }]);
+    setInputValue('');
+  }
 
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen gap-3">
@@ -19,8 +23,14 @@ function Page() {
           type="text"
           className="bg-transparent p-2 outline-none border-b border-white text-white rounded-sm"
           placeholder="What to do?"
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
         />
-        <button className="ml-3 bg-red-500 py-2 px-5 rounded-sm active:bg-red-400">Add</button>
+        <button
+          className="ml-3 bg-red-500 py-2 px-5 rounded-sm active:bg-red-400"
+          onClick={handleAddButton}>
+            Add
+          </button>
         
         <ul className="mt-9 flex flex-col gap-4">
 
